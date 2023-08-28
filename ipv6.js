@@ -35,8 +35,10 @@ getModuleStatus().then((module_status) => {
   if (specific_wifi)  {
     $notification.post('关闭IPv6', '', '')
     switchModule(Ipv6_Cancel, Ipv6_Enable);
+    $done();
     } else {
     $notification.post('启用IPv6', '', '')
     switchModule(Ipv6_Enable, Ipv6_Cancel);
+    $done();
   }
 })
