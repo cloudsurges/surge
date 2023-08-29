@@ -1,7 +1,7 @@
 const IPv6_Cancel = 'IPv6-Cancel';
 const IPv6_Enable = 'IPv6-Enable';
 //const specific_wifi = $network.wifi.ssid === '' || $network.wifi.ssid === '';
-const wifi = typeof $network.wifi.ssid != 'undefined';
+//const wifi = typeof $network.wifi.ssid != 'undefined';
 let ip6addr = (typeof $network.v6 != 'undefined') && (typeof $network.v6.primaryAddress != 'undefined') ? $network.v6.primaryAddress : '';
 
 function getModuleStatus() {
