@@ -1,5 +1,0 @@
-#!name=IPv6-Cancel
-#!desc=IPv6-Cancel
- 
-[General]
-ipv6 = false
