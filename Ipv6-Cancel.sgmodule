@@ -1,5 +1,5 @@
-#!name=关闭Ipv6
-#!desc=关闭Ipv6
+#!name=Ipv6-Cancel
+#!desc=Ipv6-Cancel
  
 [General]
 ipv6 = false
