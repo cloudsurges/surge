@@ -2,6 +2,7 @@ const IPv6_Cancel = 'IPv6-Cancel';
 const IPv6_Enable = 'IPv6-Enable';
 //const specific_wifi = $network.wifi.ssid === '' || $network.wifi.ssid === '';
 //const wifi = typeof $network.wifi.ssid != 'undefined';
+const ssid = $network.wifi.ssid;
 const { wifi, v4 } = $network;
 const v4IP = v4.primaryAddress;
 let ip6addr = (typeof $network.v6 != 'undefined') && (typeof $network.v6.primaryAddress != 'undefined') ? $network.v6.primaryAddress : '';
@@ -26,7 +27,7 @@ getModuleStatus().then((module_status) => {
   if (!ip6addr && (!module_status[0] || module_status[1])) {
     // 在特定网络下关闭IPv6
     //$notification.post('关闭IPv6', '', '')
-    console.log(`IP: ${network.wifi.ssid} \t` + `IP: ${v4IP} \n`)
+    console.log(`IP: ${ssid} \t` + `IP: ${v4IP} \n`)
     console.log('关闭IPv6')
     switchModule(IPv6_Cancel, IPv6_Enable);
   } else if (ip6addr && (module_status[0] || !module_status[1])) {
