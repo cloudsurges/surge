@@ -1,5 +1,5 @@
-#!name=开启Ipv6
-#!desc=开启Ipv6
+#!name=Ipv6-Enable
+#!desc=Ipv6-Enable
  
 [General]
 ipv6 = ture
