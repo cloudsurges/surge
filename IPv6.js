@@ -1,12 +1,12 @@
-const dns_module_home = 'AdGuard Home';
-const dns_module_out = 'AdGuard Home DoH';
-const home = $network.wifi.ssid === 'SSID1' || $network.wifi.ssid === 'SSID2';
+const Ipv6_Cancel = 'Ipv6-Cancel';
+const Ipv6_Enable = 'Ipv6-Enable';
+const specific_wifi = $network.wifi.ssid === 'jawave-5G' || $network.wifi.ssid === 'jawave02-5G';
  
 function getModuleStatus() {
   return new Promise((resolve) => {
     $httpAPI('GET', 'v1/modules', null, (data) => {
       let enabled = data.enabled;
-      resolve([enabled.includes(dns_module_home), enabled.includes(dns_module_out)]);
+      resolve([enabled.includes(Ipv6_Cancel), enabled.includes(Ipv6_Enable)]);
     });
   });
 }
@@ -19,14 +19,14 @@ const switchModule = (enable_module_name, disable_module_name) => {
 }
  
 getModuleStatus().then((module_status) => {
-  if (home && (!module_status[0] || module_status[1])) {
+  if (specific_wifi && (!module_status[0] || module_status[1])) {
     // 在家，用本地 DNS
-    $notification.post('使用 AdGuard Home 本地 DNS', '', '')
-    switchModule(dns_module_home, dns_module_out);
-  } else if (!home && (module_status[0] || !module_status[1])) {
+    $notification.post('关闭IPv6', '', '')
+    switchModule(Ipv6_Cancel, Ipv6_Enable);
+  } else if (!specific_wifi && (module_status[0] || !module_status[1])) {
     // 不在家，使用 DoH
-    $notification.post('使用 AdGuard Home DoH', '', '')
-    switchModule(dns_module_out, dns_module_home);
+    $notification.post('开启IPv6', '', '')
+    switchModule(Ipv6_Enable, Ipv6_Cancel);
   } else {
     // 重複觸發 => 結束
     // $notification.post('重複觸發','','')
