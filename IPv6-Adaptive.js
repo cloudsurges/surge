@@ -20,17 +20,6 @@ const switchModule = (enable_module_name, disable_module_name) => {
   }, () => $done());
 }
 
-if(ip6addr){
-    $notification.post('IPv6不为空', '', '')
-    $done();
-}else if(!ip6addr){
-    $notification.post('IPv6为空', '', '')
-    $done();
-} else{
-    $notification.post('其它', '', '')
-    $done();
-}
- 
 getModuleStatus().then((module_status) => {
   if (!ip6addr && (!module_status[0] || module_status[1])) {
     // 在特定网络下关闭IPv6
