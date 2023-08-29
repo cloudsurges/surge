@@ -29,7 +29,7 @@ getModuleStatus().then((module_status) => {
     switchModule(IPv6_Enable, IPv6_Cancel);
   } else {
     // 重复触发 => 结束
-    $notification.post('特定WIFI环境下关闭IPv6的模块条件重复触发！','','')
+    // $notification.post('特定WIFI环境下关闭IPv6的模块条件重复触发！','','')
     $done();
   }
 })
