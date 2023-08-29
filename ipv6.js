@@ -27,6 +27,10 @@ getModuleStatus().then((module_status) => {
     // 一般情况下使用ipv6
     $notification.post('启用IPv6', '', '')
     switchModule(Ipv6_Enable, Ipv6_Cancel);
+  } else if (!specific_wifi) {
+    // 一般情况下使用ipv6
+    $notification.post('启用IPv6', '', '')
+    switchModule(Ipv6_Enable, Ipv6_Cancel);
   } else {
     // 重複觸發 => 結束
     // $notification.post('重複觸發','','')
