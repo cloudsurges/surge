@@ -26,7 +26,7 @@ getModuleStatus().then((module_status) => {
   if (!ip6addr && (!module_status[0] || module_status[1])) {
     // 在特定网络下关闭IPv6
     //$notification.post('关闭IPv6', '', '')
-    console.log('${v4IP}\n')
+    console.log(`IP: ${v4IP} \n`)
     console.log('关闭IPv6')
     switchModule(IPv6_Cancel, IPv6_Enable);
   } else if (ip6addr && (module_status[0] || !module_status[1])) {
