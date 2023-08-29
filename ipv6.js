@@ -23,11 +23,11 @@ getModuleStatus().then((module_status) => {
     // 特定wifi下不使用ipv6
     $notification.post('关闭IPv6', '', '')
     switchModule(Ipv6_Cancel, Ipv6_Enable);
-  } else if (!specific_wifi && (module_status[0] || !module_status[1])) {
+  } else if (!specific_wifi) {
     // 一般情况下使用ipv6
     $notification.post('启用IPv6', '', '')
     switchModule(Ipv6_Enable, Ipv6_Cancel);
-  } else if (!specific_wifi) {
+  } else if (!specific_wifi && (module_status[0] || !module_status[1])) {
     // 一般情况下使用ipv6
     $notification.post('启用IPv6', '', '')
     switchModule(Ipv6_Enable, Ipv6_Cancel);
