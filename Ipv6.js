@@ -8,11 +8,11 @@ const getModuleStatus = new Promise((resolve) => {
 });
 
 getModuleStatus.then((enabled) => {
-  if (!specific_wifi && !enabled) {
+  if (!specific_wifi) {
     //在家，卻啟用模組 => 關閉
 	$notification.post('關閉IPv6', "" ,"");
 	enableModule(false);
-  } else if (specific_wifi && enabled) {
+  } else if (specific_wifi) {
 	//不在家，沒啟用模組 => 啟用
 	$notification.post('啟用IPv6', "" ,"");
 	enableModule(true);
