@@ -1,0 +1,5 @@
+#!name=IPv6-Enable
+#!desc=IPv6-Enable
+ 
+[General]
+ipv6 = ture
