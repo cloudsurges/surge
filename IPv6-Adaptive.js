@@ -1,16 +1,7 @@
 const IPv6_Cancel = 'IPv6-Cancel';
 const IPv6_Enable = 'IPv6-Enable';
-const specific_wifi = $network.wifi.ssid === 'jawave-5G' || $network.wifi.ssid === 'jawave02-5G';
-
+//const specific_wifi = $network.wifi.ssid === 'jawave-5G' || $network.wifi.ssid === 'jawave02-5G';
 let ip6addr = (typeof $network.v6 != 'undefined') && (typeof $network.v6.primaryAddress != 'undefined') ? $network.v6.primaryAddress : '';
-
-if(ip6addr){
-    $notification.post('IPv6不为空', '', '')
-    $done();
-}else{
-    $notification.post('IPv6为空', '', '')
-    $done();
-}
 
 function getModuleStatus() {
   return new Promise((resolve) => {
@@ -27,13 +18,21 @@ const switchModule = (enable_module_name, disable_module_name) => {
     [disable_module_name]: false,
   }, () => $done());
 }
+
+//if(ip6addr){
+//    $notification.post('IPv6不为空', '', '')
+//    $done();
+//}else{
+//    $notification.post('IPv6为空', '', '')
+//    $done();
+//}
  
 getModuleStatus().then((module_status) => {
-  if (specific_wifi && (!module_status[0] || module_status[1])) {
+  if (ip6addr && (!module_status[0] || module_status[1])) {
     // 在特定网络下关闭IPv6
     $notification.post('关闭IPv6', '', '')
     switchModule(IPv6_Cancel, IPv6_Enable);
-  } else if (!specific_wifi && (module_status[0] || !module_status[1])) {
+  } else if (!ip6addr && (module_status[0] || !module_status[1])) {
     // 默认的情况下开启IPv6
     $notification.post('开启IPv6', '', '')
     switchModule(IPv6_Enable, IPv6_Cancel);
