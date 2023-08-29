@@ -5,10 +5,11 @@ const specific_wifi = $network.wifi.ssid === 'jawave-5G' || $network.wifi.ssid =
 let ip6addr = (typeof $network.v6 != 'undefined') && (typeof $network.v6.primaryAddress != 'undefined') ? $network.v6.primaryAddress : '';
 
 if(ip6addr){
-    $notification.post('hahahahahah', '', '')
+    $notification.post('IPv6不为空', '', '')
     $done();
 }else{
-  $done();
+    $notification.post('IPv6为空', '', '')
+    $done();
 }
 
 function getModuleStatus() {
