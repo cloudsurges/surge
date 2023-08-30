@@ -47,7 +47,6 @@ if (IPv4_address) {
  })
 }
 else{
-      console.log(`${network} \n`)
       console.log('无网络连接!')
       $done();
 }
