@@ -2,6 +2,7 @@ const IPv6_Cancel = 'IPv6-Cancel';
 const IPv6_Enable = 'IPv6-Enable';
 //const specific_wifi = $network.wifi.ssid === '' || $network.wifi.ssid === '';
 //const wifi = typeof $network.wifi.ssid != 'undefined';
+const intent = $intent.parameter;
 const ssid = $network.wifi.ssid;
 const { wifi, v4 } = $network;
 const IPv4_address = v4.primaryAddress;
@@ -41,13 +42,13 @@ if (IPv4_address) {
             // 重复触发 => 结束
             // $notification.post('特定WIFI环境下关闭IPv6的模块条件重复触发！','','')
             console.log('网络连接中!')
-            console.log(`${intent.parameter}`)
+            console.log(`${intent} \n`)
             $done();
        }
  })
 }
 else{
-      console.log(`${intent.parameter}`)
+      console.log(`${intent} \n`)
       console.log('无网络连接!')
       $done();
 }
