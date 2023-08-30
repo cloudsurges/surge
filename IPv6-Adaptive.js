@@ -4,10 +4,10 @@ const IPv6_Enable = 'IPv6-Enable';
 //const wifi = typeof $network.wifi.ssid != 'undefined';
 const ssid = $network.wifi.ssid;
 const { wifi, v4 } = $network;
-const IPv4 = v4.primaryAddress;
-let ip6addr = (typeof $network.v6 != 'undefined') && (typeof $network.v6.primaryAddress != 'undefined') ? $network.v6.primaryAddress : '';
+const IPv4_address = v4.primaryAddress;
+let IPv6_address = (typeof $network.v6 != 'undefined') && (typeof $network.v6.primaryAddress != 'undefined') ? $network.v6.primaryAddress : '';
 
-if (IPv4) {
+if (IPv4_address) {
       function getModuleStatus() {
             return new Promise((resolve) => {
                   $httpAPI('GET', 'v1/modules', null, (data) => {
@@ -25,16 +25,16 @@ if (IPv4) {
  }
 
       getModuleStatus().then((module_status) => {
-            if (!ip6addr && (!module_status[0] || module_status[1])) {
+            if (!IPv6_address && (!module_status[0] || module_status[1])) {
             // 在特定网络下关闭IPv6
             //$notification.post('关闭IPv6', '', '')
-            console.log(`IP: ${IPv4} \n`)
+            console.log(`IP: ${IPv4_address} \n`)
             console.log('关闭IPv6')
             switchModule(IPv6_Cancel, IPv6_Enable);
-       } else if (ip6addr && (module_status[0] || !module_status[1])) {
+       } else if (IPv6_address && (module_status[0] || !module_status[1])) {
             // 默认的情况下开启IPv6
             //$notification.post('开启IPv6', '', '')
-            console.log(`IP: ${IPv4} \n`)
+            console.log(`IP: ${IPv4_address} \n`)
             console.log('开启IPv6')
             switchModule(IPv6_Enable, IPv6_Cancel);
        } else {
