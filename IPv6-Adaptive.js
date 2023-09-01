@@ -40,9 +40,9 @@ if (IPv4_address) {
        } else {
             // 重复触发 => 结束
             // $notification.post('特定WIFI环境下关闭IPv6的模块条件重复触发！','','')
-            console.log('网络连接中!')
             //console.log($network)
-            console.log(`${network.cellular-data.radio} \t` + `${network.wifi.ssid} \n` + `${network.v4.primaryAddress} \t` + `${network.v6.primaryAddress} \n` + `${network.dns}`)
+            //console.log(`${network.cellular-data.radio}
+            console.log('\n' + `Cellular·Radio: ` + $network.cellular + `\n` +`WIFI·SSID: ` +  $network.wifi.ssid + `\n` + 'IPv4: ' + $network.v4.primaryAddress + `\n` + 'IPv6: ' + $network.v6.primaryAddress + `\n` + 'DNS: ' +$network.dns)
             $done();
        }
  })
