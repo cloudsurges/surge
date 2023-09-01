@@ -43,7 +43,7 @@ if (IPv4_address) {
             //console.log($network)
             //console.log(`${network.cellular-data.radio}
             //console.log('\n' + `Cellular·Radio: ` + $network.cellular + `\n` +`WIFI·SSID: ` +  $network.wifi.ssid + `\n` + 'IPv4: ' + $network.v4.primaryAddress + `\n` + 'IPv6: ' + $network.v6.primaryAddress + `\n` + 'DNS: ' +$network.dns)
-            console.log(`\n` +`WIFI·SSID: ` +  $network.wifi.ssid + `\n` + 'IPv4: ' + $network.v4.primaryAddress + `\n` + 'IPv6: ' + $network.v6.primaryAddress + `\n`)
+            console.log(`\n` +`WIFI·SSID: ` +  $network.wifi.ssid + `\n` + 'IPv4: ' + $network.v4.primaryAddress + `\n` + 'IPv6: ' + $network.v6.primaryAddress)
             $done();
        }
  })
