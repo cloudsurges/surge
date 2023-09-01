@@ -42,7 +42,8 @@ if (IPv4_address) {
             // $notification.post('特定WIFI环境下关闭IPv6的模块条件重复触发！','','')
             //console.log($network)
             //console.log(`${network.cellular-data.radio}
-            console.log('\n' + `Cellular·Radio: ` + $network.cellular + `\n` +`WIFI·SSID: ` +  $network.wifi.ssid + `\n` + 'IPv4: ' + $network.v4.primaryAddress + `\n` + 'IPv6: ' + $network.v6.primaryAddress + `\n` + 'DNS: ' +$network.dns)
+            //console.log('\n' + `Cellular·Radio: ` + $network.cellular + `\n` +`WIFI·SSID: ` +  $network.wifi.ssid + `\n` + 'IPv4: ' + $network.v4.primaryAddress + `\n` + 'IPv6: ' + $network.v6.primaryAddress + `\n` + 'DNS: ' +$network.dns)
+            console.log(`\n` +`WIFI·SSID: ` +  $network.wifi.ssid + `\n` + 'IPv4: ' + $network.v4.primaryAddress + `\n` + 'IPv6: ' + $network.v6.primaryAddress + `\n`)
             $done();
        }
  })
