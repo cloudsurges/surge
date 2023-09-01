@@ -26,13 +26,13 @@ if (IPv4_address) {
 
       getModuleStatus().then((module_status) => {
             if (!IPv6_address && (!module_status[0] || module_status[1])) {
-            // 在特定网络下关闭IPv6
+            // 在不支持IPv6的网络下关闭IPv6
             //$notification.post('关闭IPv6', '', '')
             console.log(`IP: ${IPv4_address} \n`)
             console.log('关闭IPv6')
             switchModule(IPv6_Cancel, IPv6_Enable);
        } else if (IPv6_address && (module_status[0] || !module_status[1])) {
-            // 默认的情况下开启IPv6
+            // 在支持IPv6的网络下开启IPv6
             //$notification.post('开启IPv6', '', '')
             console.log(`IP: ${IPv4_address} \n`)
             console.log('开启IPv6')
@@ -41,7 +41,8 @@ if (IPv4_address) {
             // 重复触发 => 结束
             // $notification.post('特定WIFI环境下关闭IPv6的模块条件重复触发！','','')
             console.log('网络连接中!')
-            console.log($network)
+            //console.log($network)
+            console.log(`${network.cellular-data.radio} \t` + `${network.wifi.ssid} \n` + `${network.v4.primaryAddress} \t` + `${network.v6.primaryAddress} \n` + `${network.dns}`)
             $done();
        }
  })
