@@ -27,7 +27,7 @@ if (IPv4_address) {
       getModuleStatus().then((module_status) => {
             if (!IPv6_address && (!module_status[0] || module_status[1])) {
             // 在不支持IPv6的网络下关闭IPv6
-                  if ($network.wifi.ssid != 'null'){
+                  if (!$network.wifi.ssid || typeof $network.wifi.ssid != 'null' || typeof $network.wifi.ssid != 'undefined'){
                   console.log('成功连接SSID:' + $network.wifi.ssid + `的WIFI! \t`)
               }
             console.log(`IP: ${IPv4_address} \t`)
@@ -35,7 +35,7 @@ if (IPv4_address) {
             switchModule(IPv6_Cancel, IPv6_Enable);
        } else if (IPv6_address && (module_status[0] || !module_status[1])) {
             // 在支持IPv6的网络下开启IPv6
-                  if ($network.wifi.ssid != 'null'){
+                  if (!$network.wifi.ssid || typeof $network.wifi.ssid != 'null' || typeof $network.wifi.ssid != 'undefined'){
                   console.log('成功连接SSID:' + $network.wifi.ssid + `的WIFI! \t`)
               }
             console.log(`IP: ${IPv4_address} \t`)
