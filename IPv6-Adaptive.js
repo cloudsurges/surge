@@ -28,8 +28,8 @@ if (IPv4_address) {
             if (!IPv6_address && (!module_status[0] || module_status[1])) {
             // 在不支持IPv6的网络下关闭IPv6
             //$notification.post('关闭IPv6', '', '')
-            console.log(`IP: ${IPv4_address} \t`)
             console.log('成功连接SSID:' + $network.wifi.ssid + `的WIFI! \t`)
+            console.log(`IP: ${IPv4_address} \t`)
             console.log('关闭IPv6')
             switchModule(IPv6_Cancel, IPv6_Enable);
        } else if (IPv6_address && (module_status[0] || !module_status[1])) {
