@@ -358,7 +358,7 @@ function JingDongBean(s) {
         headers: {
           Cookie: KEY
         },
-        body: 'functionId=babelGetGuideTips&appid=ld'
+        body: 'functionId=signBeanAct&appid=ld'
       };
       $nobyda.post(JDBUrl, function(error, response, data) {
         try {
