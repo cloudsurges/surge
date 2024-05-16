@@ -86,22 +86,18 @@ function notify() {
       var Tf = fail ? `失败${fail}个${err?`, `:``}` : ``
       var Te = err ? `错误${err}个` : ``
       var one = `【签到概览】:  ${Ts+Tf+Te}${Ts||Tf||Te?`\n`:`获取失败\n`}`
-      var two = Tbean : ``
-      var three = ``
-      var four = ``
-      var five = ``
       var DName = merge.TotalBean && merge.TotalBean.nickname ? merge.TotalBean.nickname : "获取失败"
       var cnNum = ["零", "一", "二", "三", "四", "五", "六", "七", "八", "九", "十"];
       const Name = DualKey || OtherKey.length > 1 ? `【签到号${cnNum[$nobyda.num]||$nobyda.num}】:  ${DName}\n` : ``
       const disables = $nobyda.read("JD_DailyBonusDisables")
       const amount = disables ? disables.split(",").length : 0
       const disa = !notify || amount ? `【温馨提示】:  检测到${$nobyda.disable?`上次执行意外崩溃, `:``}已禁用${notify?`${amount}个`:`所有`}接口, 如需开启请前往BoxJs或查看脚本内第118行注释.\n` : ``
-      $nobyda.notify("", "", Name + one + two + three + four + five + disa + notify, {
+      $nobyda.notify("", "", Name + one + disa + notify, {
         'media-url': $nobyda.headUrl || 'https://cdn.jsdelivr.net/gh/NobyDa/mini@master/Color/jd.png'
       });
       $nobyda.headUrl = null;
       if ($nobyda.isJSBox) {
-        $nobyda.st = (typeof($nobyda.st) == 'undefined' ? '' : $nobyda.st) + Name + one + two + three + four + five + "\n"
+        $nobyda.st = (typeof($nobyda.st) == 'undefined' ? '' : $nobyda.st) + Name + one + "\n"
       }
     } catch (eor) {
       $nobyda.notify("通知模块 " + eor.name + "‼️", JSON.stringify(eor), eor.message)
