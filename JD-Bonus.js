@@ -181,11 +181,11 @@ function JingDongBean(s) {
     if (disable("JDBean")) return resolve()
     setTimeout(() => {
       const JDBUrl = {
-        url: 'https://api.m.jd.com/client.action',
+        url: 'https://api.m.jd.com/client.action?functionId=signBeanAct&appid=ld',
         headers: {
           Cookie: KEY
         },
-        body: 'functionId=signBeanAct&appid=ld'
+        body: ''
       };
       $nobyda.post(JDBUrl, function(error, response, data) {
         try {
