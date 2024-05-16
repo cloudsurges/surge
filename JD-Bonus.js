@@ -80,16 +80,16 @@ function notify() {
         err += merge[i].error ? Number(merge[i].error) : 0
         notify += merge[i].notify ? "\n" + merge[i].notify : ""
       }
-      var beans = merge.TotalBean && merge.TotalBean.Qbear ? `${merge.TotalBean.Qbear}京豆${Steel?`, `:``}` : ""
-      var Tbean = bean ? `${bean.toFixed(0)}京豆${steel?", ":""}` : ""
+      var beans = merge.TotalBean && merge.TotalBean.Qbear ? `${merge.TotalBean.Qbear}京豆` : ""
+      var Tbean = bean ? `${bean.toFixed(0)}京豆` : ""
       var Ts = success ? `成功${success}个${fail||err?`, `:``}` : ``
       var Tf = fail ? `失败${fail}个${err?`, `:``}` : ``
       var Te = err ? `错误${err}个` : ``
       var one = `【签到概览】:  ${Ts+Tf+Te}${Ts||Tf||Te?`\n`:`获取失败\n`}`
-      var two = Tbean || TSteel ? `【签到奖励】:  ${Tbean+TSteel}\n` : ``
-      var three = TCash || TSubsidy || TMoney ? `【其他奖励】:  ${TCash+TSubsidy+TMoney}\n` : ``
-      var four = `【账号总计】:  ${beans+Steel}${beans||Steel?`\n`:`获取失败\n`}`
-      var five = `【其他总计】:  ${Subsidy+Money+Cash}${Subsidy||Money||Cash?`\n`:`获取失败\n`}`
+      var two = Tbean : ``
+      var three = ``
+      var four = ``
+      var five = ``
       var DName = merge.TotalBean && merge.TotalBean.nickname ? merge.TotalBean.nickname : "获取失败"
       var cnNum = ["零", "一", "二", "三", "四", "五", "六", "七", "八", "九", "十"];
       const Name = DualKey || OtherKey.length > 1 ? `【签到号${cnNum[$nobyda.num]||$nobyda.num}】:  ${DName}\n` : ``
