@@ -52,11 +52,13 @@ async function all(cookie, jrBody) {
   switch (stop) {
     case 0:
       await Promise.all([
-        JingDongBean(stop) //京东京豆
+        JingDongBean(stop), //京东京豆
+        JingDongStore(stop) //京东超市
       ]);
       break;
     default:
       await JingDongBean(0); //京东京豆
+      await JingDongStore(Wait(stop)); //京东超市
       break;
   }
   await Promise.all([
@@ -218,6 +220,44 @@ function JingDongBean(s) {
   });
 }
 
+function JingDongStore(s) {
+  merge.JDGStore = {};
+  return new Promise(resolve => {
+    if (disable("JDGStore")) return resolve()
+    setTimeout(() => {
+      $nobyda.get({
+        url: 'https://api.m.jd.com/api?appid=jdsupermarket&functionId=smtg_sign&clientVersion=8.0.0&client=m&body=%7B%7D',
+        headers: {
+          Cookie: KEY,
+          Origin: `https://jdsupermarket.jd.com`
+        }
+      }, (error, response, data) => {
+        try {
+          if (error) throw new Error(error);
+          const cc = JSON.parse(data);
+          const Details = LogDetails ? "response:\n" + data : '';
+          if (cc.data && cc.data.success === true && cc.data.bizCode === 0) {
+            console.log(`\n京东商城-超市签到成功 ${Details}`)
+            merge.JDGStore.success = 1
+            merge.JDGStore.bean = cc.data.result.jdBeanCount || 0
+            merge.JDGStore.notify = `京东商城-超市: 成功, 明细: ${merge.JDGStore.bean||`无`}京豆 🐶`
+          } else {
+            if (!cc.data) cc.data = {}
+            console.log(`\n京东商城-超市签到失败 ${Details}`)
+            const tp = cc.data.bizCode == 811 ? `已签过` : cc.data.bizCode == 300 ? `Cookie失效` : `${cc.data.bizMsg||`未知`}`
+            merge.JDGStore.notify = `京东商城-超市: 失败, 原因: ${tp}${cc.data.bizCode==300?`‼️`:` ⚠️`}`
+            merge.JDGStore.fail = 1
+          }
+        } catch (eor) {
+          $nobyda.AnError("京东商城-超市", "JDGStore", eor, response, data)
+        } finally {
+          resolve()
+        }
+      })
+    }, s)
+    if (out) setTimeout(resolve, out + s)
+  });
+}
 
 
 function TotalBean() {
