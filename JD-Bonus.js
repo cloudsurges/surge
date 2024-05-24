@@ -52,11 +52,11 @@ async function all(cookie, jrBody) {
   switch (stop) {
     case 0:
       await Promise.all([
-        JingDongBean(stop), //京东京豆
+        JingDongBean(stop) //京东京豆
       ]);
       break;
     default:
-      await JingDongBean(0); //京东京豆
+      await JingDongBean(0) //京东京豆
       break;
   }
   await Promise.all([
