@@ -56,7 +56,7 @@ async function all(cookie, jrBody) {
       ]);
       break;
     default:
-      await JingDongBean(0) //京东京豆
+      await JingDongBean(0); //京东京豆
       break;
   }
   await Promise.all([
@@ -217,6 +217,7 @@ function JingDongBean(s) {
     if (out) setTimeout(resolve, out + s)
   });
 }
+
 
 
 function TotalBean() {
