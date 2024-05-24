@@ -53,12 +53,10 @@ async function all(cookie, jrBody) {
     case 0:
       await Promise.all([
         JingDongBean(stop), //京东京豆
-      // JingDongStore(stop) //京东超市
       ]);
       break;
     default:
       await JingDongBean(0); //京东京豆
-      // await JingDongStore(Wait(stop)); //京东超市
       break;
   }
   await Promise.all([
